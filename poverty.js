@@ -6,6 +6,7 @@ const userList = document.querySelector("#users");
 const pov = document.querySelector(".container");
 const povid = document.querySelector("#poverty");
 const sm = document.querySelector(".sm-heading");
+const person = document.querySelector(".person");
 let povertyLevel = 0;
 
 myForm.addEventListener("submit", onSubmit);
@@ -55,9 +56,25 @@ function onSubmit(e) {
     if (abovepov > 1) {
       sm.textContent =
         "You are " + abovepov.toFixed(2) + " times above the poverty line!";
+
+      person.innerHTML =
+        '<i id="personLogo" class="fas fa-user fa-' +
+        Math.round(abovepov) * 2 +
+        'x"></i>' +
+        '<h2 class="lg - heading">Greater Than</span></h2>' +
+        '<i id="personLogo" class="fas fa-user fa"></i>';
     } else {
       sm.textContent =
         "You are " + abovepov.toFixed(2) + " times below the poverty line!";
+
+      person.innerHTML =
+        '<i id="personLogo" class="fas fa-user fa-' +
+        1 +
+        'x"></i>' +
+        '<h2 class="lg - heading">Less Than</span></h2>' +
+        '<i id="personLogo" class="fas fa-user fa-' +
+        Math.round(1 / abovepov) +
+        'x"></i>';
     }
 
     console.log(povertyLevel);
